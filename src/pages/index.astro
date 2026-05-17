@@ -10,6 +10,7 @@ import IconHeart from '../components/icons/IconHeart.astro';
 import IconMap from '../components/icons/IconMap.astro';
 import IconLivestream from '../components/icons/IconLivestream.astro';
 import IconGospel from '../components/icons/IconGospel.astro';
+import Cross from '../components/Cross.astro';
 ---
 
 <BaseLayout>
@@ -17,7 +18,7 @@ import IconGospel from '../components/icons/IconGospel.astro';
   <section class="hero">
     <div class="hero__overlay">
       <div class="hero__content container">
-        <span class="hero__cross">â︎︎¦︎</span>
+        <span class="hero__cross"><Cross size="3rem" color="var(--color-accent)" /></span>
         <h1 class="hero__title">{parish.name}</h1>
         {parish.bilingual && (
           <p class="hero__title-uk">{parish.nameUk}</p>
@@ -35,10 +36,10 @@ import IconGospel from '../components/icons/IconGospel.astro';
   <div class="service-strip">
     <div class="service-strip__inner">
       <div class="service-strip__item">
-        <span class="service-strip__label">â︎︎¦︎ Confession</span>
+        <span class="service-strip__label"><Cross size="0.9em" color="currentColor" /> Confession</span>
         <span class="service-strip__time">{parish.services.confession.times.join(' & ')}</span>
       </div>
-      <span class="service-strip__separator">â︎¢</span>
+      <span class="service-strip__separator">•</span>
       {parish.services.liturgy.map((svc, i) => (
         <>
           <div class="service-strip__item">
@@ -46,7 +47,7 @@ import IconGospel from '../components/icons/IconGospel.astro';
             <span class="service-strip__time">{svc.day} {svc.time} ({svc.language})</span>
           </div>
           {i < parish.services.liturgy.length - 1 && (
-            <span class="service-strip__separator">â︎¢</span>
+            <span class="service-strip__separator">•</span>
           )}
         </>
       ))}
@@ -59,20 +60,20 @@ import IconGospel from '../components/icons/IconGospel.astro';
   <!-- Welcome Section -->
   <section class="section">
     <div class="container content-width text-center">
-      <div class="cross-ornament">â︎︎ ︎ â︎︎ ︎ â︎︎ ︎</div>
+      <div class="cross-ornament"><Cross size="1.2rem" color="var(--color-accent)" /> <Cross size="1.2rem" color="var(--color-accent)" /> <Cross size="1.2rem" color="var(--color-accent)" /></div>
       <h2>Come and See</h2>
       <p style="margin: 0 auto var(--space-lg);">
-        There is a form of Christian worship that is 1,500 years old â︎ where every prayer is 
+        There is a form of Christian worship that is 1,500 years old — where every prayer is 
         sung, the air is thick with incense, and the walls are covered in icons of saints who 
         have gone before you. It is fully Catholic, deeply ancient, and probably unlike anything 
         you've experienced before. <strong>You are welcome to walk in this Sunday.</strong>
       </p>
       {parish.bilingual && (
         <p class="uk-text" style="margin: 0 auto var(--space-xl); max-width: 65ch;">
-          Ð︎Ð¸ â︎ ÑÐºÑÐ°ÑÐ½ÑÑÐºÐ° Ð³ÑÐµÐºÐ¾-ÐºÐ°ÑÐ¾Ð»Ð¸ÑÑÐºÐ° Ð¿Ð°ÑÐ°ÑÑÑ Ð² ÐÐ´Ð¼Ð¾Ð½ÑÐ¾Ð½Ñ. ÐÐ°ÑÐºÐ°Ð²Ð¾ Ð¿ÑÐ¾ÑÐ¸Ð¼Ð¾!
+          Ми — українська греко-католицька парафія в Едмонтоні. Ласкаво просимо!
         </p>
       )}
-      <a href="/visit/" class="btn btn--primary">What to Expect at Your First Visit â︎</a>
+      <a href="/visit/" class="btn btn--primary">What to Expect at Your First Visit →</a>
     </div>
   </section>
 
@@ -130,20 +131,20 @@ import IconGospel from '../components/icons/IconGospel.astro';
           <hr class="gold-divider gold-divider--left" />
           <p>
             Before there was a "Catholic Church" and an "Orthodox Church," there was simply 
-            <em>the Church</em> â︎ one faith, expressed in the languages and cultures of the 
+            <em>the Church</em> — one faith, expressed in the languages and cultures of the 
             ancient world. Byzantine Catholicism preserves that undivided heritage: Eastern 
             in worship, Catholic in communion, ancient in roots.
           </p>
           <p>
             The Divine Liturgy of St. John Chrysostom has been prayed, largely unchanged, 
             since the 4th century. When you hear it, you're hearing what Christians have 
-            heard for over 1,600 years. That's not nostalgia â︎ it's continuity.
+            heard for over 1,600 years. That's not nostalgia — it's continuity.
           </p>
-          <a href="/about/" class="btn btn--outline">Learn More About Our Faith â︎</a>
+          <a href="/about/" class="btn btn--outline">Learn More About Our Faith →</a>
         </div>
         <div class="home-about__image">
           <img src="/images/dormition-about.jpg" alt="Icon of the Dormition of the Theotokos by Andreas Ritzos, 15th century" class="home-about__img" />
-          <p class="home-about__caption">The Dormition of the Theotokos â︎ Andreas Ritzos, 15th century</p>
+          <p class="home-about__caption">The Dormition of the Theotokos — Andreas Ritzos, 15th century</p>
         </div>
       </div>
     </div>
@@ -203,7 +204,6 @@ import IconGospel from '../components/icons/IconGospel.astro';
     display: block;
     margin-bottom: var(--space-md);
     text-shadow: 0 0 24px rgba(200, 168, 78, 0.35);
-    font-variant-emoji: text;
   }
 
   .hero__title {

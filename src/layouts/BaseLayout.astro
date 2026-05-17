@@ -10,8 +10,8 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const pageTitle = title ? `${title} â︎ ${parish.shortName}` : parish.name;
-const pageDescription = description || `${parish.name} â︎ ${parish.rite} parish in ${parish.address.city}, ${parish.address.province}. All are welcome.`;
+const pageTitle = title ? `${title} — ${parish.shortName}` : parish.name;
+const pageDescription = description || `${parish.name} — ${parish.rite} parish in ${parish.address.city}, ${parish.address.province}. All are welcome.`;
 ---
 
 <!DOCTYPE html>

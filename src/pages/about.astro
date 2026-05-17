@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { parish } from '../../parish.config';
+import Cross from '../components/Cross.astro';
 ---
 
 <BaseLayout title="About" description="Learn about Byzantine Catholicism and our parish community.">
@@ -8,7 +9,7 @@ import { parish } from '../../parish.config';
     <div class="container content-width text-center">
       <h1>About Our Parish</h1>
       <p class="page-header__subtitle">
-        An ancient faith you probably didn't know existed â︎ and a community that's been 
+        An ancient faith you probably didn't know existed — and a community that's been 
         keeping it alive for generations.
       </p>
     </div>
@@ -23,24 +24,24 @@ import { parish } from '../../parish.config';
 
       <p>
         Here's something most Catholics don't know: the Catholic Church has never been just 
-        Roman. There are 23 Eastern Catholic Churches â︎ all in full communion with the Pope, 
-        all fully Catholic â︎ that worship in traditions far older than what you'll find in 
+        Roman. There are 23 Eastern Catholic Churches — all in full communion with the Pope, 
+        all fully Catholic — that worship in traditions far older than what you'll find in 
         most parishes in North America.
       </p>
       <p>
         The <strong>Byzantine rite</strong> is one of those traditions. It traces its roots to 
-        the early Church in Constantinople and the great Fathers â︎ St. John Chrysostom, 
+        the early Church in Constantinople and the great Fathers — St. John Chrysostom, 
         St. Basil the Great, the Desert Fathers. If you've ever felt like there must be 
         <em>more</em> to Christian worship than what you've experienced, you might be right. 
         The Eastern tradition has been preserving that "more" for 1,500 years.
       </p>
       <p>
-        St. John Paul II wrote that the Church must "breathe with both lungs" â︎ Western and 
+        St. John Paul II wrote that the Church must "breathe with both lungs" — Western and 
         Eastern. Most Catholics have only ever breathed with one. Byzantine Catholicism is 
         the other lung, and it changes everything about how you experience the faith.
       </p>
 
-      <div class="cross-ornament">â︎︎ ︎ â︎︎ ︎ â︎︎ ︎</div>
+      <div class="cross-ornament"><Cross size="1.2rem" color="var(--color-accent)" /> <Cross size="1.2rem" color="var(--color-accent)" /> <Cross size="1.2rem" color="var(--color-accent)" /></div>
 
       <!-- How We're Different -->
       <h2>How Our Worship Differs</h2>
@@ -51,14 +52,14 @@ import { parish } from '../../parish.config';
           <h4>🎵 Liturgy</h4>
           <p>
             Our Divine Liturgy is almost entirely <strong>sung</strong>. The prayers themselves are 
-            the music â︎ there are no hymns inserted between parts. The entire service is one 
+            the music — there are no hymns inserted between parts. The entire service is one 
             continuous act of worship.
           </p>
         </div>
         <div class="comparison__item comparison__item--featured">
           <h4>🖼️ Icons</h4>
           <p>
-            Sacred icons are central to our worship â︎ they are windows into heaven, not mere 
+            Sacred icons are central to our worship — they are windows into heaven, not mere 
             decoration. The <strong>iconostasis</strong> (icon screen) before the altar is the 
             defining architectural feature of a Byzantine church.
           </p>
@@ -74,7 +75,7 @@ import { parish } from '../../parish.config';
         <div class="comparison__item">
           <h4>👶 Sacraments of Initiation</h4>
           <p>
-            Baptism, Chrismation (Confirmation), and first Communion are all given together â︎ even 
+            Baptism, Chrismation (Confirmation), and first Communion are all given together — even 
             to infants. A child is fully initiated into the Church from the very beginning.
           </p>
         </div>
@@ -89,27 +90,27 @@ import { parish } from '../../parish.config';
           <h4>📅 The Calendar</h4>
           <p>
             We follow the liturgical calendar of the Eastern Church, with its own cycle of feasts, 
-            fasts, and seasons. Some dates differ from the Roman calendar â︎ notably, we follow the 
+            fasts, and seasons. Some dates differ from the Roman calendar — notably, we follow the 
             Julian calendar for some celebrations.
           </p>
         </div>
       </div>
 
-      <div class="cross-ornament">â︎︎ ︎ â︎︎ ︎ â︎︎ ︎</div>
+      <div class="cross-ornament"><Cross size="1.2rem" color="var(--color-accent)" /> <Cross size="1.2rem" color="var(--color-accent)" /> <Cross size="1.2rem" color="var(--color-accent)" /></div>
 
       <!-- Our Parish -->
       <h2>Our Parish</h2>
       <hr class="gold-divider gold-divider--left" />
 
       <p>
-        Our parish is named for the <strong>Dormition</strong> â︎ the "falling asleep" of the 
+        Our parish is named for the <strong>Dormition</strong> — the "falling asleep" of the 
         Blessed Virgin Mary, one of the great feasts of the Eastern Church. It's a fitting name: 
-        the Dormition is not a story of loss, but of passage â︎ the Theotokos entering fully 
+        the Dormition is not a story of loss, but of passage — the Theotokos entering fully 
         into the life she was created for.
       </p>
       <p>
         Dormition parish has served the Ukrainian Catholic community in west Edmonton for 
-        generations. But increasingly, our pews include people from all backgrounds â︎ 
+        generations. But increasingly, our pews include people from all backgrounds — 
         Roman Catholics drawn to the Eastern tradition, converts from Protestantism and 
         Orthodoxy, seekers who walked in one Sunday and never left. If that sounds like 
         it might be you, you're in good company.
@@ -135,7 +136,7 @@ import { parish } from '../../parish.config';
         </div>
       )}
 
-      <div class="cross-ornament">â︎︎ ︎ â︎︎ ︎ â︎︎ ︎</div>
+      <div class="cross-ornament"><Cross size="1.2rem" color="var(--color-accent)" /> <Cross size="1.2rem" color="var(--color-accent)" /> <Cross size="1.2rem" color="var(--color-accent)" /></div>
 
       <!-- Contact -->
       <div id="contact">
@@ -150,7 +151,7 @@ import { parish } from '../../parish.config';
               {parish.address.city}, {parish.address.province} {parish.address.postalCode}
             </p>
             <a href={parish.address.mapUrl} target="_blank" rel="noopener" class="btn btn--outline" style="margin-top: var(--space-md);">
-              Get Directions â︎
+              Get Directions →
             </a>
           </div>
 
