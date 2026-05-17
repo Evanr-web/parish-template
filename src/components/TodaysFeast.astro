@@ -12,7 +12,7 @@ try {
     feastData = await response.json();
   }
 } catch (e) {
-  // Calendar API unavailable — component gracefully hides
+  // Calendar API unavailable â︎ component gracefully hides
 }
 ---
 
@@ -32,7 +32,7 @@ try {
         )}
       </div>
       <a href={`${parish.calendarApi}/days/${new Date().getFullYear()}/${String(new Date().getMonth()+1).padStart(2,'0')}/${String(new Date().getDate()).padStart(2,'0')}.json`} class="feast__link" target="_blank" rel="noopener">
-        View Readings →
+        View Readings â︎
       </a>
     </div>
   </div>

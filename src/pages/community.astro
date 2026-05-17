@@ -29,7 +29,7 @@ import { parish } from '../../parish.config';
                 and the scripture readings for the week.
               </p>
               <a href={parish.links.bulletin} class="btn btn--primary" target="_blank" rel="noopener">
-                Download Latest Bulletin (PDF) →
+                Download Latest Bulletin (PDF) â︎
               </a>
             </>
           ) : (
@@ -43,7 +43,7 @@ import { parish } from '../../parish.config';
         </div>
       </div>
 
-      <div class="cross-ornament">✠ ✠ ✠</div>
+      <div class="cross-ornament">â︎︎ ︎ â︎︎ ︎ â︎︎ ︎</div>
 
       <!-- News / Announcements -->
       <h2>📢 Announcements</h2>
@@ -65,7 +65,7 @@ import { parish } from '../../parish.config';
           <h3 class="announcement__title">Confession Available Every Sunday</h3>
           <p>
             The Mystery of Confession is available every Sunday at <strong>{parish.services.confession.times.join(' & ')}</strong>. 
-            Don't hesitate — Father is always happy to hear confessions, and appointments can also 
+            Don't hesitate â︎ Father is always happy to hear confessions, and appointments can also 
             be arranged during the week.
           </p>
         </div>
@@ -75,14 +75,14 @@ import { parish } from '../../parish.config';
         <em>Have an announcement for the parish? Contact us at <a href={`mailto:${parish.email}`}>{parish.email}</a>.</em>
       </p>
 
-      <div class="cross-ornament">✠ ✠ ✠</div>
+      <div class="cross-ornament">â︎︎ ︎ â︎︎ ︎ â︎︎ ︎</div>
 
       <!-- Get Involved -->
       <h2>🤝 Get Involved</h2>
       <hr class="gold-divider gold-divider--left" />
 
       <p>
-        A parish is not a building — it's a community. There are many ways to contribute your 
+        A parish is not a building â︎ it's a community. There are many ways to contribute your 
         gifts and be part of the life of Dormition parish.
       </p>
 
@@ -91,7 +91,7 @@ import { parish } from '../../parish.config';
           <h3>🎵 Church Choir</h3>
           <p>
             Our choir leads the congregation in the ancient chants of the Byzantine tradition. 
-            Musical experience is helpful but not required — a willingness to learn and a love 
+            Musical experience is helpful but not required â︎ a willingness to learn and a love 
             of sacred music are what matter most.
           </p>
         </div>
@@ -105,10 +105,10 @@ import { parish } from '../../parish.config';
         </div>
 
         <div class="ministry-card">
-          <h3>☕ Hospitality</h3>
+          <h3>â︎︎ Hospitality</h3>
           <p>
             Our coffee hour after Liturgy is often the first real connection a visitor has with 
-            the parish. Help prepare, serve, and clean up — and more importantly, welcome newcomers.
+            the parish. Help prepare, serve, and clean up â︎ and more importantly, welcome newcomers.
           </p>
         </div>
 
@@ -131,13 +131,13 @@ import { parish } from '../../parish.config';
         <div class="ministry-card">
           <h3>🙏 Prayer Groups</h3>
           <p>
-            Join fellow parishioners in regular prayer — the Rosary, Akathists, and other 
+            Join fellow parishioners in regular prayer â︎ the Rosary, Akathists, and other 
             devotions that deepen our spiritual life together.
           </p>
         </div>
       </div>
 
-      <div class="cross-ornament">✠ ✠ ✠</div>
+      <div class="cross-ornament">â︎︎ ︎ â︎︎ ︎ â︎︎ ︎</div>
 
       <!-- Newsletter Signup -->
       <div class="newsletter-section" id="newsletter">
@@ -149,7 +149,7 @@ import { parish } from '../../parish.config';
         {parish.links.newsletter ? (
           <div class="text-center">
             <a href={parish.links.newsletter} class="btn btn--primary" target="_blank" rel="noopener">
-              Subscribe to Our Newsletter →
+              Subscribe to Our Newsletter â︎
             </a>
           </div>
         ) : (
@@ -162,27 +162,27 @@ import { parish } from '../../parish.config';
         )}
       </div>
 
-      <div class="cross-ornament">✠ ✠ ✠</div>
+      <div class="cross-ornament">â︎︎ ︎ â︎︎ ︎ â︎︎ ︎</div>
 
       <!-- Donate -->
       <div class="donate-section" id="donate">
         <h2 class="text-center">Support Our Parish</h2>
         <p class="text-center" style="max-width: 55ch; margin: 0 auto var(--space-lg);">
-          Your generosity sustains our parish — the building, the ministries, and the mission. 
+          Your generosity sustains our parish â︎ the building, the ministries, and the mission. 
           Every gift, no matter the size, helps us continue serving God and our community.
         </p>
 
         {parish.links.donate ? (
           <div class="text-center">
             <a href={parish.links.donate} class="btn btn--gold" target="_blank" rel="noopener">
-              Give Online →
+              Give Online â︎
             </a>
           </div>
         ) : (
           <div class="text-center">
             <p class="text-secondary font-ui" style="font-size: 0.9rem;">
               Offerings can be made in person during Divine Liturgy or by contacting the parish office.<br />
-              <a href={`tel:${parish.phone}`}>{parish.phone}</a> • <a href={`mailto:${parish.email}`}>{parish.email}</a>
+              <a href={`tel:${parish.phone}`}>{parish.phone}</a> â︎¢ <a href={`mailto:${parish.email}`}>{parish.email}</a>
             </p>
           </div>
         )}

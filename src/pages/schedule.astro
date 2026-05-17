@@ -52,7 +52,7 @@ try {
           </p>
           <p class="confession-highlight__note">
             {parish.services.confession.note}. The Mystery of Confession (Reconciliation) is 
-            always available — don't hesitate to ask.
+            always available â︎ don't hesitate to ask.
           </p>
         </div>
       </div>
@@ -73,7 +73,7 @@ try {
           <tr class="confession-row">
             <td><strong>🕯️ Confession</strong></td>
             <td>{parish.services.confession.times.join(', ')}</td>
-            <td>—</td>
+            <td>â︎</td>
           </tr>
           {parish.services.other.map(svc => (
             <tr>
@@ -97,14 +97,14 @@ try {
         any updates.
       </p>
 
-      <div class="cross-ornament">✠ ✠ ✠</div>
+      <div class="cross-ornament">â︎︎ ︎ â︎︎ ︎ â︎︎ ︎</div>
 
       <!-- Liturgical Calendar -->
       {upcomingFeasts.length > 0 && (
         <>
           <h2>Upcoming Feasts & Commemorations</h2>
           <hr class="gold-divider gold-divider--left" />
-          <p class="text-secondary">From the Byzantine liturgical calendar — next 14 days.</p>
+          <p class="text-secondary">From the Byzantine liturgical calendar â︎ next 14 days.</p>
 
           <div class="feast-list">
             {upcomingFeasts.map((feast, i) => (
@@ -113,7 +113,7 @@ try {
                 <span class="feast-item__name">{feast.name}</span>
                 <span class="feast-item__meta">
                   {feast.tone && `Tone ${feast.tone}`}
-                  {feast.tone && feast.fast && ' • '}
+                  {feast.tone && feast.fast && ' â︎¢ '}
                   {feast.fast && feast.fast}
                 </span>
               </div>
@@ -126,14 +126,14 @@ try {
         </>
       )}
 
-      <div class="cross-ornament">✠ ✠ ✠</div>
+      <div class="cross-ornament">â︎︎ ︎ â︎︎ ︎ â︎︎ ︎</div>
 
       <!-- Sacraments -->
       <h2>The Holy Mysteries (Sacraments)</h2>
       <hr class="gold-divider gold-divider--left" />
 
       <p>
-        In the Byzantine tradition, we speak of the <strong>Holy Mysteries</strong> — God's grace 
+        In the Byzantine tradition, we speak of the <strong>Holy Mysteries</strong> â︎ God's grace 
         given to us through sacred signs. If you are preparing for any sacrament, please contact 
         Father well in advance.
       </p>
@@ -143,7 +143,7 @@ try {
           <h3>Baptism & Chrismation</h3>
           <p>
             In the Eastern tradition, Baptism, Chrismation (Confirmation), and Holy Communion are 
-            given together — even to infants. Please contact Father at least one month before the 
+            given together â︎ even to infants. Please contact Father at least one month before the 
             desired date to arrange preparation.
           </p>
         </div>
@@ -151,7 +151,7 @@ try {
         <div class="sacrament-card">
           <h3>Holy Matrimony</h3>
           <p>
-            The Crowning ceremony — our marriage rite — is one of the most beautiful services in 
+            The Crowning ceremony â︎ our marriage rite â︎ is one of the most beautiful services in 
             the Christian tradition. Couples should contact Father at least six months before the 
             planned date. Marriage preparation is required.
           </p>
@@ -170,7 +170,7 @@ try {
           <h3>Anointing of the Sick</h3>
           <p>
             For those who are seriously ill, facing surgery, or in danger of death. Contact Father 
-            at any time — this sacrament is never too early and should not be left until the last 
+            at any time â︎ this sacrament is never too early and should not be left until the last 
             moment.
           </p>
         </div>

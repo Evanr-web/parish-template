@@ -269,6 +269,8 @@ img {
   letter-spacing: 0.8rem;
   margin: var(--space-2xl) 0;
   opacity: 0.5;
+  font-variant-emoji: text;
+  text-rendering: optimizeLegibility;
 }
 
 /* --- Byzantine Pattern Dividers (Owen Jones / Dolmetsch, public domain) --- */
