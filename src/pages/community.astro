@@ -1,0 +1,304 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { parish } from '../../parish.config';
+---
+
+<BaseLayout title="Community" description="Bulletin, events, ministries, and parish life.">
+  <section class="page-header page-header--icon">
+    <div class="container content-width text-center">
+      <h1>Community & News</h1>
+      <p class="page-header__subtitle">
+        Stay connected with the life of our parish.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-width">
+
+      <!-- Bulletin -->
+      <div id="bulletin">
+        <h2>📰 Weekly Bulletin</h2>
+        <hr class="gold-divider gold-divider--left" />
+
+        <div class="bulletin-card">
+          {parish.links.bulletin ? (
+            <>
+              <p>
+                Our weekly bulletin contains announcements, the service schedule, upcoming events, 
+                and the scripture readings for the week.
+              </p>
+              <a href={parish.links.bulletin} class="btn btn--primary" target="_blank" rel="noopener">
+                Download Latest Bulletin (PDF) →
+              </a>
+            </>
+          ) : (
+            <p>
+              Our weekly bulletin is distributed at Divine Liturgy each Sunday. It contains 
+              announcements, the service schedule, upcoming events, and scripture readings for the week.
+              <br /><br />
+              <em class="text-secondary">Digital bulletins coming soon. In the meantime, pick up a copy after Liturgy.</em>
+            </p>
+          )}
+        </div>
+      </div>
+
+      <div class="cross-ornament">✠ ✠ ✠</div>
+
+      <!-- News / Announcements -->
+      <h2>📢 Announcements</h2>
+      <hr class="gold-divider gold-divider--left" />
+
+      <div class="announcements">
+        <div class="announcement">
+          <span class="announcement__date">Current</span>
+          <h3 class="announcement__title">Welcome to Our New Website</h3>
+          <p>
+            We've launched a new parish website to better serve our community and welcome visitors. 
+            If you have suggestions, photos to share, or announcements to post, please contact the 
+            parish office.
+          </p>
+        </div>
+
+        <div class="announcement">
+          <span class="announcement__date">Ongoing</span>
+          <h3 class="announcement__title">Confession Available Every Sunday</h3>
+          <p>
+            The Mystery of Confession is available every Sunday at <strong>{parish.services.confession.times.join(' & ')}</strong>. 
+            Don't hesitate — Father is always happy to hear confessions, and appointments can also 
+            be arranged during the week.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-secondary font-ui" style="font-size: 0.85rem; margin-top: var(--space-lg);">
+        <em>Have an announcement for the parish? Contact us at <a href={`mailto:${parish.email}`}>{parish.email}</a>.</em>
+      </p>
+
+      <div class="cross-ornament">✠ ✠ ✠</div>
+
+      <!-- Get Involved -->
+      <h2>🤝 Get Involved</h2>
+      <hr class="gold-divider gold-divider--left" />
+
+      <p>
+        A parish is not a building — it's a community. There are many ways to contribute your 
+        gifts and be part of the life of Dormition parish.
+      </p>
+
+      <div class="ministry-grid">
+        <div class="ministry-card">
+          <h3>🎵 Church Choir</h3>
+          <p>
+            Our choir leads the congregation in the ancient chants of the Byzantine tradition. 
+            Musical experience is helpful but not required — a willingness to learn and a love 
+            of sacred music are what matter most.
+          </p>
+        </div>
+
+        <div class="ministry-card">
+          <h3>📖 Readers</h3>
+          <p>
+            Cantors and readers proclaim the Epistle readings and lead the faithful in the 
+            responses during Divine Liturgy. Training is provided.
+          </p>
+        </div>
+
+        <div class="ministry-card">
+          <h3>☕ Hospitality</h3>
+          <p>
+            Our coffee hour after Liturgy is often the first real connection a visitor has with 
+            the parish. Help prepare, serve, and clean up — and more importantly, welcome newcomers.
+          </p>
+        </div>
+
+        <div class="ministry-card">
+          <h3>🏛️ Parish Council</h3>
+          <p>
+            The parish council supports the pastor in the administration and direction of the 
+            parish. Members are elected from the community.
+          </p>
+        </div>
+
+        <div class="ministry-card">
+          <h3>📚 Religious Education</h3>
+          <p>
+            Helping our children and catechumens learn the faith is one of the most important 
+            ministries in the Church. Teachers and helpers are always needed.
+          </p>
+        </div>
+
+        <div class="ministry-card">
+          <h3>🙏 Prayer Groups</h3>
+          <p>
+            Join fellow parishioners in regular prayer — the Rosary, Akathists, and other 
+            devotions that deepen our spiritual life together.
+          </p>
+        </div>
+      </div>
+
+      <div class="cross-ornament">✠ ✠ ✠</div>
+
+      <!-- Newsletter Signup -->
+      <div class="newsletter-section" id="newsletter">
+        <h2 class="text-center">Stay Connected</h2>
+        <p class="text-center" style="max-width: 50ch; margin: 0 auto var(--space-xl);">
+          Receive weekly updates, announcements, and the bulletin directly to your inbox.
+        </p>
+
+        {parish.links.newsletter ? (
+          <div class="text-center">
+            <a href={parish.links.newsletter} class="btn btn--primary" target="_blank" rel="noopener">
+              Subscribe to Our Newsletter →
+            </a>
+          </div>
+        ) : (
+          <div class="newsletter-form">
+            <p class="text-center text-secondary font-ui" style="font-size: 0.9rem;">
+              Newsletter signup coming soon. In the meantime, contact us at 
+              <a href={`mailto:${parish.email}`}>{parish.email}</a> to be added to our mailing list.
+            </p>
+          </div>
+        )}
+      </div>
+
+      <div class="cross-ornament">✠ ✠ ✠</div>
+
+      <!-- Donate -->
+      <div class="donate-section" id="donate">
+        <h2 class="text-center">Support Our Parish</h2>
+        <p class="text-center" style="max-width: 55ch; margin: 0 auto var(--space-lg);">
+          Your generosity sustains our parish — the building, the ministries, and the mission. 
+          Every gift, no matter the size, helps us continue serving God and our community.
+        </p>
+
+        {parish.links.donate ? (
+          <div class="text-center">
+            <a href={parish.links.donate} class="btn btn--gold" target="_blank" rel="noopener">
+              Give Online →
+            </a>
+          </div>
+        ) : (
+          <div class="text-center">
+            <p class="text-secondary font-ui" style="font-size: 0.9rem;">
+              Offerings can be made in person during Divine Liturgy or by contacting the parish office.<br />
+              <a href={`tel:${parish.phone}`}>{parish.phone}</a> • <a href={`mailto:${parish.email}`}>{parish.email}</a>
+            </p>
+          </div>
+        )}
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    color: var(--color-text-inverse);
+    padding: var(--space-3xl) 0;
+  }
+
+  .page-header h1 {
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-md);
+  }
+
+  .page-header__subtitle {
+    font-size: 1.1rem;
+    color: rgba(250, 246, 239, 0.8);
+  }
+
+  /* Bulletin */
+  .bulletin-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--color-accent);
+  }
+
+  /* Announcements */
+  .announcements {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .announcement {
+    padding: var(--space-xl);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .announcement__date {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-dark);
+    background: rgba(201, 168, 76, 0.12);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .announcement__title {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    font-size: 1.2rem;
+  }
+
+  .announcement p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+
+  /* Ministry Grid */
+  .ministry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .ministry-card {
+    padding: var(--space-xl);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .ministry-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .ministry-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .ministry-card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    color: var(--color-text-secondary);
+  }
+
+  /* Newsletter */
+  .newsletter-section {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3xl) var(--space-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Donate */
+  .donate-section {
+    padding: var(--space-2xl);
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.08), rgba(201, 168, 76, 0.03));
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: var(--radius-lg);
+  }
+</style>

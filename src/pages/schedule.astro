@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { parish } from '../../parish.config';
+
+// Fetch upcoming feasts from Calendar API
+let upcomingFeasts: any[] = [];
+try {
+  const today = new Date();
+  for (let i = 0; i < 14; i++) {
+    const d = new Date(today);
+    d.setDate(d.getDate() + i);
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const res = await fetch(`${parish.calendarApi}/days/${d.getFullYear()}/${month}/${day}.json`);
+    if (res.ok) {
+      const data = await res.json();
+      if (data.saints_en?.[0] || data.saint_en || data.title_en) {
+        upcomingFeasts.push({
+          date: d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+          name: data.saints_en?.[0] || data.saint_en || data.title_en,
+          tone: data.tone,
+          fast: data.fast_en,
+        });
+      }
+    }
+  }
+} catch (e) {
+  // Calendar API unavailable
+}
+---
+
+<BaseLayout title="Schedule & Sacraments" description="Service times, confession, sacraments, and the liturgical calendar.">
+  <section class="page-header page-header--icon">
+    <div class="container content-width text-center">
+      <h1>Schedule & Sacraments</h1>
+      <p class="page-header__subtitle">
+        Service times, confession, and sacramental life at our parish.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-width">
+
+      <!-- Confession - TOP PRIORITY -->
+      <div class="confession-highlight" id="confession">
+        <div class="confession-highlight__icon">🕯️</div>
+        <div class="confession-highlight__content">
+          <h2 class="confession-highlight__title">Holy Mystery of Confession</h2>
+          <p class="confession-highlight__times">
+            {parish.services.confession.times.join(' & ')}
+          </p>
+          <p class="confession-highlight__note">
+            {parish.services.confession.note}. The Mystery of Confession (Reconciliation) is 
+            always available — don't hesitate to ask.
+          </p>
+        </div>
+      </div>
+
+      <!-- Weekly Schedule -->
+      <h2 id="services">Weekly Services</h2>
+      <hr class="gold-divider gold-divider--left" />
+
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Day & Time</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="confession-row">
+            <td><strong>🕯️ Confession</strong></td>
+            <td>{parish.services.confession.times.join(', ')}</td>
+            <td>—</td>
+          </tr>
+          {parish.services.other.map(svc => (
+            <tr>
+              <td>{svc.label}</td>
+              <td>{svc.day} {svc.time}</td>
+              <td>{svc.language}</td>
+            </tr>
+          ))}
+          {parish.services.liturgy.map(svc => (
+            <tr>
+              <td><strong>{svc.label}</strong></td>
+              <td>{svc.day} {svc.time}</td>
+              <td>{svc.language}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <p class="text-secondary font-ui" style="font-size: 0.85rem; margin-top: var(--space-md);">
+        Schedule may change for major feasts and fasting seasons. Check the weekly bulletin for 
+        any updates.
+      </p>
+
+      <div class="cross-ornament">✠ ✠ ✠</div>
+
+      <!-- Liturgical Calendar -->
+      {upcomingFeasts.length > 0 && (
+        <>
+          <h2>Upcoming Feasts & Commemorations</h2>
+          <hr class="gold-divider gold-divider--left" />
+          <p class="text-secondary">From the Byzantine liturgical calendar — next 14 days.</p>
+
+          <div class="feast-list">
+            {upcomingFeasts.map((feast, i) => (
+              <div class:list={['feast-item', { 'feast-item--today': i === 0 }]}>
+                <span class="feast-item__date">{feast.date}</span>
+                <span class="feast-item__name">{feast.name}</span>
+                <span class="feast-item__meta">
+                  {feast.tone && `Tone ${feast.tone}`}
+                  {feast.tone && feast.fast && ' • '}
+                  {feast.fast && feast.fast}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <p class="text-secondary font-ui" style="font-size: 0.8rem; margin-top: var(--space-md);">
+            Calendar data provided by the <a href="https://byzantinedoors.com">Byzantine Doors Calendar API</a>.
+          </p>
+        </>
+      )}
+
+      <div class="cross-ornament">✠ ✠ ✠</div>
+
+      <!-- Sacraments -->
+      <h2>The Holy Mysteries (Sacraments)</h2>
+      <hr class="gold-divider gold-divider--left" />
+
+      <p>
+        In the Byzantine tradition, we speak of the <strong>Holy Mysteries</strong> — God's grace 
+        given to us through sacred signs. If you are preparing for any sacrament, please contact 
+        Father well in advance.
+      </p>
+
+      <div class="sacrament-grid">
+        <div class="sacrament-card">
+          <h3>Baptism & Chrismation</h3>
+          <p>
+            In the Eastern tradition, Baptism, Chrismation (Confirmation), and Holy Communion are 
+            given together — even to infants. Please contact Father at least one month before the 
+            desired date to arrange preparation.
+          </p>
+        </div>
+
+        <div class="sacrament-card">
+          <h3>Holy Matrimony</h3>
+          <p>
+            The Crowning ceremony — our marriage rite — is one of the most beautiful services in 
+            the Christian tradition. Couples should contact Father at least six months before the 
+            planned date. Marriage preparation is required.
+          </p>
+        </div>
+
+        <div class="sacrament-card">
+          <h3>Confession (Reconciliation)</h3>
+          <p>
+            Available <strong>{parish.services.confession.times.join(' & ')}</strong>, or by 
+            appointment. The Mystery of Reconciliation restores our relationship with God and the 
+            Church. Don't let it be the sacrament you put off.
+          </p>
+        </div>
+
+        <div class="sacrament-card">
+          <h3>Anointing of the Sick</h3>
+          <p>
+            For those who are seriously ill, facing surgery, or in danger of death. Contact Father 
+            at any time — this sacrament is never too early and should not be left until the last 
+            moment.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: var(--space-2xl);">
+        <p class="font-ui text-secondary">
+          To prepare for any sacrament, contact: 
+          <a href={`tel:${parish.phone}`}>{parish.phone}</a> or 
+          <a href={`mailto:${parish.email}`}>{parish.email}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    color: var(--color-text-inverse);
+    padding: var(--space-3xl) 0;
+  }
+
+  .page-header h1 {
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-md);
+  }
+
+  .page-header__subtitle {
+    font-size: 1.1rem;
+    color: rgba(250, 246, 239, 0.8);
+  }
+
+  /* Confession Highlight */
+  .confession-highlight {
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(201, 168, 76, 0.05));
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    display: flex;
+    gap: var(--space-xl);
+    align-items: flex-start;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .confession-highlight__icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  .confession-highlight__title {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .confession-highlight__times {
+    font-family: var(--font-ui);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .confession-highlight__note {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+  }
+
+  /* Feast List */
+  .feast-list {
+    margin-top: var(--space-lg);
+  }
+
+  .feast-item {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    align-items: center;
+    font-size: 0.95rem;
+  }
+
+  .feast-item--today {
+    background: rgba(201, 168, 76, 0.08);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+  }
+
+  .feast-item__date {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+
+  .feast-item__name {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+  }
+
+  .feast-item__meta {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    text-align: right;
+  }
+
+  /* Sacrament Grid */
+  .sacrament-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+  }
+
+  .sacrament-card {
+    padding: var(--space-xl);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border-top: 3px solid var(--color-accent);
+  }
+
+  .sacrament-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .sacrament-card p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .confession-highlight {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .feast-item {
+      grid-template-columns: 1fr;
+      gap: var(--space-xs);
+      padding: var(--space-md);
+    }
+
+    .feast-item__meta {
+      text-align: left;
+    }
+  }
+</style>

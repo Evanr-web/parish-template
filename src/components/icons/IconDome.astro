@@ -1,0 +1,12 @@
+---
+interface Props { size?: number; class?: string; }
+const { size = 24, class: className = '' } = Astro.props;
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={className} aria-hidden="true">
+  <!-- Onion dome with cross -->
+  <line x1="12" y1="1" x2="12" y2="4" />
+  <line x1="10.5" y1="2.5" x2="13.5" y2="2.5" />
+  <path d="M8 12c0-5 2-8 4-8s4 3 4 8" />
+  <rect x="6" y="12" width="12" height="10" rx="0" />
+  <line x1="12" y1="12" x2="12" y2="22" />
+</svg>

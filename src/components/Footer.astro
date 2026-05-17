@@ -1,0 +1,194 @@
+---
+import { parish } from '../../parish.config';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__gold-line"></div>
+  <div class="footer__inner container">
+    <div class="footer__main">
+      <div class="footer__info">
+        <h3 class="footer__name">
+          <span class="footer__cross">☦</span>
+          {parish.name}
+        </h3>
+        {parish.bilingual && (
+          <p class="footer__name-uk">{parish.nameUk}</p>
+        )}
+        <p class="footer__eparchy">{parish.eparchy}</p>
+
+        <div class="footer__contact">
+          <p>{parish.address.street}</p>
+          <p>{parish.address.city}, {parish.address.province} {parish.address.postalCode}</p>
+          <p><a href={`tel:${parish.phone}`}>{parish.phone}</a></p>
+          <p><a href={`mailto:${parish.email}`}>{parish.email}</a></p>
+        </div>
+      </div>
+
+      <div class="footer__nav">
+        <h4 class="footer__heading">Navigate</h4>
+        <a href="/">Home</a>
+        <a href="/visit/">Visit Us</a>
+        <a href="/about/">About</a>
+        <a href="/schedule/">Schedule & Sacraments</a>
+        <a href="/community/">Community</a>
+      </div>
+
+      <div class="footer__quick">
+        <h4 class="footer__heading">Quick Access</h4>
+        <a href="/schedule/#confession">Confession Times</a>
+        <a href="/schedule/#services">Service Schedule</a>
+        {parish.links.bulletin && <a href={parish.links.bulletin}>Latest Bulletin</a>}
+        {parish.links.donate && <a href={parish.links.donate}>Give Online</a>}
+        {parish.links.livestream && <a href={parish.links.livestream}>Livestream</a>}
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__disclaimer">
+        This is an independent parish website. Content is informational and not intended to be 
+        theologically authoritative. For questions about faith and practice, please consult your pastor.
+      </p>
+      <p class="footer__copyright">
+        © {year} {parish.shortName}. Powered by <a href="https://byzantinedoors.com" target="_blank" rel="noopener">Byzantine Doors</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-primary-dark);
+    color: var(--color-text-inverse);
+    margin-top: var(--space-4xl);
+  }
+
+  .footer__gold-line {
+    height: 3px;
+    background: linear-gradient(90deg, 
+      var(--color-warm-dark) 0%, 
+      var(--color-accent) 20%, 
+      var(--color-accent-light) 50%, 
+      var(--color-accent) 80%, 
+      var(--color-warm-dark) 100%);
+  }
+
+  .footer__inner {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  .footer__main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-3xl);
+    padding-bottom: var(--space-2xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer__name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-xs);
+  }
+
+  .footer__cross {
+    color: var(--color-accent);
+    margin-right: var(--space-xs);
+  }
+
+  .footer__name-uk {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-accent-light);
+    font-size: 1rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .footer__eparchy {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: var(--space-lg);
+  }
+
+  .footer__contact {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .footer__contact a {
+    color: var(--color-accent-light);
+  }
+
+  .footer__contact a:hover {
+    color: var(--color-accent);
+  }
+
+  .footer__heading {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+  }
+
+  .footer__nav,
+  .footer__quick {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .footer__nav a,
+  .footer__quick a {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .footer__nav a:hover,
+  .footer__quick a:hover {
+    color: var(--color-accent-light);
+  }
+
+  .footer__bottom {
+    padding-top: var(--space-xl);
+    text-align: center;
+  }
+
+  .footer__disclaimer {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.35);
+    max-width: 600px;
+    margin: 0 auto var(--space-md);
+    line-height: 1.6;
+  }
+
+  .footer__copyright {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .footer__copyright a {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .footer__main {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+</style>

@@ -1,0 +1,118 @@
+---
+import { parish } from '../../parish.config';
+
+// Build-time: fetch today's data from Calendar API
+let feastData: any = null;
+try {
+  const today = new Date();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const response = await fetch(`${parish.calendarApi}/days/${today.getFullYear()}/${month}/${day}.json`);
+  if (response.ok) {
+    feastData = await response.json();
+  }
+} catch (e) {
+  // Calendar API unavailable — component gracefully hides
+}
+---
+
+{feastData && (
+  <div class="feast">
+    <div class="feast__inner container">
+      <div class="feast__content">
+        <span class="feast__label">Today's Commemoration</span>
+        <h3 class="feast__name">
+          {feastData.saints_en?.[0] || feastData.saint_en || feastData.title_en || 'Liturgical Day'}
+        </h3>
+        {feastData.tone && (
+          <span class="feast__meta">Tone {feastData.tone}</span>
+        )}
+        {feastData.fast_en && (
+          <span class="feast__meta feast__meta--fast">{feastData.fast_en}</span>
+        )}
+      </div>
+      <a href={`${parish.calendarApi}/days/${new Date().getFullYear()}/${String(new Date().getMonth()+1).padStart(2,'0')}/${String(new Date().getDate()).padStart(2,'0')}.json`} class="feast__link" target="_blank" rel="noopener">
+        View Readings →
+      </a>
+    </div>
+  </div>
+)}
+
+<style>
+  .feast {
+    background: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-md) 0;
+  }
+
+  .feast__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+  }
+
+  .feast__content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .feast__label {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent-dark);
+    background: rgba(200, 168, 78, 0.15);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .feast__name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0;
+  }
+
+  .feast__meta {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+  }
+
+  .feast__meta--fast {
+    color: var(--color-warm);
+    font-weight: 500;
+  }
+
+  .feast__link {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .feast__link:hover {
+    color: var(--color-accent-dark);
+  }
+
+  @media (max-width: 768px) {
+    .feast__inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .feast__content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-xs);
+    }
+  }
+</style>

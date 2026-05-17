@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+patterns/source/
+patterns/grid/
+patterns/extracted/
+patterns/extracted_v2/
+pitch-assets/*.b64
+.DS_Store

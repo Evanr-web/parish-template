@@ -1,0 +1,306 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TodaysFeast from '../components/TodaysFeast.astro';
+import { parish } from '../../parish.config';
+import IconCandle from '../components/icons/IconCandle.astro';
+import IconCalendar from '../components/icons/IconCalendar.astro';
+import IconDome from '../components/icons/IconDome.astro';
+import IconBell from '../components/icons/IconBell.astro';
+import IconHeart from '../components/icons/IconHeart.astro';
+import IconMap from '../components/icons/IconMap.astro';
+import IconLivestream from '../components/icons/IconLivestream.astro';
+import IconGospel from '../components/icons/IconGospel.astro';
+---
+
+<BaseLayout>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__overlay">
+      <div class="hero__content container">
+        <span class="hero__cross">☦</span>
+        <h1 class="hero__title">{parish.name}</h1>
+        {parish.bilingual && (
+          <p class="hero__title-uk">{parish.nameUk}</p>
+        )}
+        <p class="hero__subtitle">Ancient faith. Living worship. All are welcome.</p>
+        <div class="hero__cta">
+          <a href="/visit/" class="btn btn--primary">Plan Your Visit</a>
+          <a href="/schedule/" class="btn btn--outline btn--outline-light">Service Times</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Times Strip -->
+  <div class="service-strip">
+    <div class="service-strip__inner">
+      <div class="service-strip__item">
+        <span class="service-strip__label">☦ Confession</span>
+        <span class="service-strip__time">{parish.services.confession.times.join(' & ')}</span>
+      </div>
+      <span class="service-strip__separator">•</span>
+      {parish.services.liturgy.map((svc, i) => (
+        <>
+          <div class="service-strip__item">
+            <span class="service-strip__label">{svc.label}</span>
+            <span class="service-strip__time">{svc.day} {svc.time} ({svc.language})</span>
+          </div>
+          {i < parish.services.liturgy.length - 1 && (
+            <span class="service-strip__separator">•</span>
+          )}
+        </>
+      ))}
+    </div>
+  </div>
+
+  <!-- Today's Feast -->
+  <TodaysFeast />
+
+  <!-- Welcome Section -->
+  <section class="section">
+    <div class="container content-width text-center">
+      <div class="cross-ornament">✠ ✠ ✠</div>
+      <h2>Come and See</h2>
+      <p style="margin: 0 auto var(--space-lg);">
+        There is a form of Christian worship that is 1,500 years old — where every prayer is 
+        sung, the air is thick with incense, and the walls are covered in icons of saints who 
+        have gone before you. It is fully Catholic, deeply ancient, and probably unlike anything 
+        you've experienced before. <strong>You are welcome to walk in this Sunday.</strong>
+      </p>
+      {parish.bilingual && (
+        <p class="uk-text" style="margin: 0 auto var(--space-xl); max-width: 65ch;">
+          Ми — українська греко-католицька парафія в Едмонтоні. Ласкаво просимо!
+        </p>
+      )}
+      <a href="/visit/" class="btn btn--primary">What to Expect at Your First Visit →</a>
+    </div>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="section section--nave">
+    <div class="container">
+      <h2 class="text-center">Find What You Need</h2>
+      <div class="quick-links">
+        <a href="/schedule/#confession" class="quick-link">
+          <span class="quick-link__icon"><IconCandle size={28} /></span>
+          Confession
+        </a>
+        <a href="/schedule/" class="quick-link">
+          <span class="quick-link__icon"><IconCalendar size={28} /></span>
+          Full Schedule
+        </a>
+        <a href="/visit/" class="quick-link">
+          <span class="quick-link__icon"><IconDome size={28} /></span>
+          First Visit
+        </a>
+        <a href="/community/#bulletin" class="quick-link">
+          <span class="quick-link__icon"><IconGospel size={28} /></span>
+          Bulletin
+        </a>
+        {parish.links.donate && (
+          <a href={parish.links.donate} class="quick-link">
+            <span class="quick-link__icon"><IconHeart size={28} /></span>
+            Give
+          </a>
+        )}
+        <a href="/about/#contact" class="quick-link">
+          <span class="quick-link__icon"><IconBell size={28} /></span>
+          Contact
+        </a>
+        {parish.links.livestream && (
+          <a href={parish.links.livestream} class="quick-link" target="_blank" rel="noopener">
+            <span class="quick-link__icon"><IconLivestream size={28} /></span>
+            Livestream
+          </a>
+        )}
+        <a href={parish.address.mapUrl} class="quick-link" target="_blank" rel="noopener">
+          <span class="quick-link__icon"><IconMap size={28} /></span>
+          Directions
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Snippet -->
+  <section class="section">
+    <div class="container">
+      <div class="home-about">
+        <div class="home-about__text">
+          <h2>A Living Tradition</h2>
+          <hr class="gold-divider gold-divider--left" />
+          <p>
+            Before there was a "Catholic Church" and an "Orthodox Church," there was simply 
+            <em>the Church</em> — one faith, expressed in the languages and cultures of the 
+            ancient world. Byzantine Catholicism preserves that undivided heritage: Eastern 
+            in worship, Catholic in communion, ancient in roots.
+          </p>
+          <p>
+            The Divine Liturgy of St. John Chrysostom has been prayed, largely unchanged, 
+            since the 4th century. When you hear it, you're hearing what Christians have 
+            heard for over 1,600 years. That's not nostalgia — it's continuity.
+          </p>
+          <a href="/about/" class="btn btn--outline">Learn More About Our Faith →</a>
+        </div>
+        <div class="home-about__image">
+          <img src="/images/dormition-about.jpg" alt="Icon of the Dormition of the Theotokos by Andreas Ritzos, 15th century" class="home-about__img" />
+          <p class="home-about__caption">The Dormition of the Theotokos — Andreas Ritzos, 15th century</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="section section--gold">
+    <div class="container text-center">
+      <h2>Find Us</h2>
+      <p class="text-secondary font-ui" style="margin: 0 auto var(--space-lg); max-width: 50ch;">
+        {parish.address.street}<br />
+        {parish.address.city}, {parish.address.province} {parish.address.postalCode}
+      </p>
+      <div class="map-wrapper">
+        <iframe
+          src={parish.address.mapEmbed}
+          width="100%"
+          height="350"
+          style="border:0; border-radius: var(--radius-md);"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    min-height: 70vh;
+    background:
+      linear-gradient(135deg, rgba(12, 26, 42, 0.78), rgba(21, 42, 62, 0.82)),
+      url('/images/dormition-hero.jpg') center 62%/cover no-repeat;
+    background-color: var(--color-primary-dark);
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__overlay {
+    width: 100%;
+    padding: var(--space-4xl) 0;
+  }
+
+  .hero__content {
+    text-align: center;
+    color: var(--color-text-inverse);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__cross {
+    font-size: 3rem;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: var(--space-md);
+    text-shadow: 0 0 24px rgba(200, 168, 78, 0.35);
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: var(--color-accent-light);
+    margin-bottom: var(--space-sm);
+    letter-spacing: 0.03em;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+
+  .hero__title-uk {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-style: italic;
+    color: rgba(212, 184, 90, 0.65);
+    margin-bottom: var(--space-lg);
+    letter-spacing: 0.02em;
+  }
+
+  .hero__subtitle {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: rgba(240, 232, 218, 0.55);
+    margin-bottom: var(--space-2xl);
+    letter-spacing: 0.08em;
+    font-style: italic;
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn--outline-light {
+    border-color: rgba(200, 168, 78, 0.4);
+    color: var(--color-text-inverse);
+  }
+
+  .btn--outline-light:hover {
+    background-color: rgba(200, 168, 78, 0.1);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* Home About */
+  .home-about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+
+  .home-about__image {
+    position: relative;
+  }
+
+  .home-about__img {
+    width: 100%;
+    object-fit: contain;
+    box-shadow: var(--shadow-lg), 0 2px 12px rgba(200, 168, 78, 0.12);
+    background: var(--color-primary-dark);
+    border: 3px solid var(--color-accent-dark);
+    padding: 4px;
+  }
+
+  .home-about__caption {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-top: var(--space-sm);
+    font-style: italic;
+  }
+
+  .map-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 60vh;
+    }
+
+    .home-about {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .home-about__image {
+      order: -1;
+    }
+  }
+</style>

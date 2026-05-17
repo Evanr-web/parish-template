@@ -1,0 +1,179 @@
+---
+import { parish } from '../../parish.config';
+
+const currentPath = Astro.url.pathname;
+
+const nav = [
+  { label: 'Home', href: '/' },
+  { label: 'Visit Us', href: '/visit/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Schedule', href: '/schedule/' },
+  { label: 'Community', href: '/community/' },
+];
+---
+
+<header class="header">
+  <div class="header__inner container">
+    <a href="/" class="header__brand">
+      <span class="header__cross">☦</span>
+      <div class="header__name">
+        <span class="header__parish-name">{parish.shortName}</span>
+        <span class="header__rite">{parish.rite}</span>
+      </div>
+    </a>
+
+    <button class="header__toggle" aria-label="Toggle navigation" id="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="header__nav" id="nav-menu">
+      {nav.map(item => (
+        <a
+          href={item.href}
+          class:list={['header__link', { 'header__link--active': currentPath === item.href }]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background: var(--color-bg);
+    background-image: var(--texture-parchment);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(12, 26, 42, 0.08);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-md);
+  }
+
+  .header__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+
+  .header__cross {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .header__name {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header__parish-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+
+  .header__rite {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .header__nav {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  .header__link {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all var(--transition);
+  }
+
+  .header__link:hover {
+    color: var(--color-primary);
+    background-color: var(--color-bg-alt);
+  }
+
+  .header__link--active {
+    color: var(--color-warm);
+    background-color: rgba(107, 29, 42, 0.06);
+    font-weight: 600;
+  }
+
+  .header__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-sm);
+  }
+
+  .header__toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    transition: all var(--transition);
+  }
+
+  @media (max-width: 768px) {
+    .header__toggle {
+      display: flex;
+    }
+
+    .header__nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-md);
+      padding: var(--space-md);
+    }
+
+    .header__nav.is-open {
+      display: flex;
+    }
+
+    .header__link {
+      padding: var(--space-md);
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('is-open');
+  });
+</script>

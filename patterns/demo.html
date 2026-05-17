@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Byzantine Pattern Demo — Parish Template</title>
+<style>
+  :root {
+    --byz-blue: #1B2A4A;
+    --byz-gold: #C6A032;
+    --byz-cream: #FAF8F0;
+    --byz-red: #8B2500;
+    --byz-teal: #1A6B5C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--byz-cream);
+    color: var(--byz-blue);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--byz-blue);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    color: var(--byz-blue);
+    margin: 2rem 0 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--byz-gold);
+    margin: 1.5rem 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: var(--byz-gold);
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  /* Pattern divider styles */
+  .pattern-divider {
+    width: 100%;
+    overflow: hidden;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+
+  .pattern-divider img {
+    max-height: 60px;
+    width: auto;
+    max-width: 100%;
+    display: inline-block;
+  }
+
+  .pattern-divider.thin img {
+    max-height: 35px;
+  }
+
+  .pattern-divider.tall img {
+    max-height: 90px;
+  }
+
+  /* Repeating pattern as background */
+  .pattern-ribbon {
+    width: 100%;
+    height: 50px;
+    background-repeat: repeat-x;
+    background-size: auto 50px;
+    background-position: center;
+    margin: 1.5rem 0;
+  }
+
+  /* Standalone element */
+  .pattern-centerpiece {
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .pattern-centerpiece img {
+    max-width: 300px;
+    opacity: 0.85;
+  }
+
+  /* Demo sections */
+  .demo-section {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 8px rgba(27,42,74,0.1);
+  }
+
+  .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--byz-gold);
+    margin-bottom: 0.25rem;
+  }
+
+  /* Hero with background pattern */
+  .hero-bg {
+    background-color: var(--byz-blue);
+    color: var(--byz-cream);
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin: 2rem 0;
+  }
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('final/rosette-medallions.png');
+    background-repeat: repeat;
+    background-size: 400px auto;
+    opacity: 0.08;
+  }
+
+  .hero-bg h1, .hero-bg p {
+    position: relative;
+    color: var(--byz-cream);
+  }
+
+  .palette {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+  }
+
+  .swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-end;
+    padding: 4px;
+    font-size: 0.65rem;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  }
+</style>
+</head>
+<body>
+
+<h1>☦ Parish Website Template</h1>
+<p class="subtitle">Byzantine Pattern Divider Demo</p>
+
+<!-- HERO with rosette background -->
+<div class="hero-bg">
+  <h1>Holy Protection Parish</h1>
+  <p>Ukrainian Greek-Catholic Church</p>
+</div>
+
+<!-- Divider 1: Vine Medallion (★ Best overall) -->
+<p class="label">★ Vine Medallion Band — Primary Divider</p>
+<div class="pattern-divider tall">
+  <img src="final/vine-medallion.png" alt="Vine medallion divider">
+</div>
+
+<div class="demo-section">
+  <h2>Welcome to Our Parish</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. This demonstrates how the vine medallion band works as a section separator between content blocks.</p>
+</div>
+
+<!-- Divider 2: Circular Tulips -->
+<p class="label">★ Circular Tulip Medallions — Feature Divider</p>
+<div class="pattern-divider tall">
+  <img src="final/circular-tulips.png" alt="Circular tulip divider">
+</div>
+
+<div class="demo-section">
+  <h2>Divine Liturgy Schedule</h2>
+  <p>The circular tulip medallion pattern creates a strong visual break between major sections. Its bold colors and rhythmic circles draw the eye without being overwhelming.</p>
+</div>
+
+<!-- Divider 3: Tulip Vine Band -->
+<p class="label">Tulip Vine Band — Ornate Header Ribbon</p>
+<div class="pattern-divider">
+  <img src="final/tulip-vine-band.png" alt="Tulip vine band">
+</div>
+
+<div class="demo-section">
+  <h2>Parish Programs</h2>
+  <p>The tulip vine band offers a more ornate, illuminated-manuscript feel. Works well for pages with richer content like program descriptions or parish history.</p>
+</div>
+
+<!-- Divider 4: Wave Anthemion (★ Subtle) -->
+<p class="label">★ Wave Anthemion — Subtle Divider</p>
+<div class="pattern-divider">
+  <img src="final/wave-anthemion.png" alt="Wave anthemion divider">
+</div>
+
+<div class="demo-section">
+  <h2>Community Events</h2>
+  <p>The green wave anthemion on dark ground is the most refined option — works beautifully as a subtle separator that doesn't compete with content. The wave crest gives it a natural "finished" edge.</p>
+</div>
+
+<!-- Divider 5: Vine Architrave (Dolmetsch) -->
+<p class="label">Vine Architrave (Dolmetsch) — Secondary Divider</p>
+<div class="pattern-divider thin">
+  <img src="final/vine-architrave.png" alt="Vine architrave">
+</div>
+
+<div class="demo-section">
+  <h2>Sacraments</h2>
+  <p>The Dolmetsch vine architrave is wider and thinner — works as a full-width rule that spans the content area. Good for lighter separations.</p>
+</div>
+
+<!-- Divider 6: Interlace Stars -->
+<p class="label">Interlace Stars — Geometric Alternative</p>
+<div class="pattern-divider">
+  <img src="final/interlace-stars.png" alt="Interlace stars">
+</div>
+
+<div class="demo-section">
+  <h2>Contact Us</h2>
+  <p>The geometric star lattice provides a structured, less organic alternative for sections that need a more formal feel.</p>
+</div>
+
+<!-- Standalone: Byzantine Cross -->
+<p class="label">★ Byzantine Cross — Centerpiece Element</p>
+<div class="pattern-centerpiece">
+  <img src="final/byzantine-cross.png" alt="Byzantine cross">
+</div>
+
+<!-- Standalone: Confronted Birds -->
+<p class="label">Confronted Birds — Byzantine Paradise Motif</p>
+<div class="pattern-centerpiece">
+  <img src="final/confronted-birds.png" alt="Confronted birds">
+</div>
+
+<!-- Palette -->
+<h3>Byzantine Doors Palette</h3>
+<div class="palette">
+  <div class="swatch" style="background: #1B2A4A">Blue<br>#1B2A4A</div>
+  <div class="swatch" style="background: #C6A032">Gold<br>#C6A032</div>
+  <div class="swatch" style="background: #FAF8F0; color: #333; text-shadow: none; border: 1px solid #ddd">Cream<br>#FAF8F0</div>
+  <div class="swatch" style="background: #8B2500">Red<br>#8B2500</div>
+  <div class="swatch" style="background: #1A6B5C">Teal<br>#1A6B5C</div>
+</div>
+
+<div style="text-align: center; margin-top: 3rem; color: #999; font-size: 0.8rem;">
+  <p>All patterns from public domain sources (Owen Jones 1856, Heinrich Dolmetsch 1906)</p>
+</div>
+
+</body>
+</html>
